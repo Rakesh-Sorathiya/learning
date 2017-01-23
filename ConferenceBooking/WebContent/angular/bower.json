@@ -1,0 +1,16 @@
+{
+  "name": "angular",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "authors": [
+        "rakeysh.sorathiy@gmail.com"
+    ],
+  "description": "Sample Spring MVC | AngularJs project",
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "angular-route": "1.5.x",
+    "bootstrap": "3.3.x",
+    "spring-security-csrf-token-interceptor": "0.1.5"
+  }
+}

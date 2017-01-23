@@ -1,0 +1,10 @@
+<p>
+	&nbsp; Duration: </br> &nbsp; <select id="selecthour" class="selectOne"
+		ng-model="roomSearchInfo.duration" >
+		<option ng-repeat="hr in $ctrl.hrArray" value="{{hr}}">{{hr}}</option>
+
+	</select> <select id="selectmin" class="selectOne"
+		ng-model="roomSearchInfo.duration.min" >
+		<option ng-repeat="min in $ctrl.minArray" value="{{min}}">{{min}}</option>
+	</select>
+</p>

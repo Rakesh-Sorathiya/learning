@@ -1,0 +1,22 @@
+
+
+header {
+	padding: 1em;
+	color: white;
+	background-color: blue;
+	clear: left;
+	text-align: center;
+}
+
+footer {
+	padding: 1em;
+	color: white;
+	background-color: blue;
+	clear: left;
+	text-align: center;
+}
+
+div {
+	margin-top: 1em;
+	width: 100%;
+}

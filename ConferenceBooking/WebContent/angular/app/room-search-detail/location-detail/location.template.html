@@ -1,0 +1,11 @@
+<!-- location template which displays check box per location to select location -->
+
+<div >
+	<Table>
+		<tr>
+			<td ng-repeat="location in $ctrl.locations"><input ng-model="roomSearchInfo.location"
+				type="checkbox" name="{{location.name}}"> {{location.name}}
+				</input></td>
+		</tr>
+	</Table>
+</div>

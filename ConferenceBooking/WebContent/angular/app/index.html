@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" ng-app="conferenceApp">
+<head>
+<meta charset="utf-8">
+<title>Conference Room</title>
+<!-- <link rel="stylesheet" href="angular/app/conferenceApp.css" /> -->
+<link rel="stylesheet"
+	href="angular/app/bower_components/bootstrap/dist/css/bootstrap.css" />
+
+<script src="angular/app/bower_components/angular/angular.js"></script>
+<script
+	src="angular/app/bower_components/angular-route/angular-route.js"></script>
+
+<script
+	src="angular/app/room-search-detail/location-detail/location.module.js"></script>
+<script
+	src="angular/app/room-search-detail/location-detail/location.component.js">
+	
+</script>
+
+<script
+	src="angular/app/room-search-detail/facilities-detail/facilities.module.js"></script>
+<script
+	src="angular/app/room-search-detail/facilities-detail/facilities.component.js"></script>
+
+<script src="angular/app/app.module.js"></script>
+
+<script
+	src="angular/app/room-search-detail/roomSearch/roomSearch.module.js"></script>
+<script
+	src="angular/app/room-search-detail/roomSearch/roomSearch.controller.js"></script>
+
+<script
+	src="angular/app/room-search-detail/booking-date/booking-time.module.js"></script>
+<script
+	src="angular/app/room-search-detail/booking-date/booking-time.component.js"></script>
+
+<script
+	src="angular/app/room-search-detail/booking-date/booking-duration.module.js"></script>
+<script
+	src="angular/app/room-search-detail/booking-date/booking-duration.component.js"></script>
+
+
+
+<style type="text/css">
+header {
+	padding: .5em;
+	color: white;
+	background-color: blue;
+	clear: left;
+	text-align: center;
+}
+
+footer {
+	padding: 1em;
+	color: white;
+	background-color: blue;
+	clear: left;
+	text-align: center;
+}
+
+div {
+	margin-bottom: .5em;
+	width: 100%;
+	border-bottom: 2px solid gray;
+}
+
+select.selectOne {
+	width: 3.5em;
+}
+</style>
+
+</head>
+<body>
+
+	<header> Conference Room Booking</header>
+
+	<div ng-controller="roomSearchController">
+		<form novalidate>
+
+			<b>Room Search</b>
+			<location></location>
+			<facilities></facilities>
+
+			<table>
+				<tr>
+					<!--  capacity purpose and priority -->
+					<td><p>
+							&nbsp; Capacity: </br> &nbsp; <input type="text" id="capacityinput"
+								ng-model="roomSearchInfo.capacity">
+
+						</p></td>
+
+					<td><p>
+							&nbsp; Purpose: </br> &nbsp; <select id="purposeselect"
+								ng-model="roomSearchInfo.purpose">
+								<option value="Appraisal Meeting">Appraisal Meeting</option>
+								<option value="Team Meeting">Team Meeting</option>
+								<option value="Client Call">Client Call</option>
+								<option value="Client Visit">Client Visit</option>
+								<option value="Interview">Interview</option>
+								<option value="Training">Training</option>
+								<option value="Video Conferencing">Video Conferencing</option>
+							</select>
+						</p></td>
+
+					<td><p>
+							&nbsp; Priority Facilities: </br> &nbsp; <select id="selctfacility1"
+								ng-model="roomSearchInfo.priority.facility1">
+								<option value="Network Point">Network Point</option>
+								<option value="Projector">Projector</option>
+								<option value="Video Conferencing">Video Conferencing</option>
+
+							</select> <select id="selctfacility2" ng-model="roomSearchInfo.priority.facility2">
+								<option value="Network Point">Network Point</option>
+								<option value="Projector">Projector</option>
+								<option value="Video Conferencing">Video Conferencing</option>
+							</select>
+						</p></td>
+				</tr>
+
+				<tr>
+					<!--  Input component for time date and duration -->
+					<td>
+						<!--  Booking date -->
+						<p>
+							&nbsp; Date: </br> &nbsp; <input id="dateinput"
+								placeholder=" DD/MM/YYYY" ng-model="roomSearchInfo.date">
+						</p>
+					</td>
+
+					<td>
+						<!--  Booking time --> <booking-time></booking-time>
+					</td>
+
+					<td>
+						<!-- Booking duration   --> <booking-duration></booking-duration>
+					</td>
+				</tr>
+
+				<tr>
+					<!--  meeting subject and even button like search ,cancel ,show Occupancy -->
+
+					<td><p>
+							&nbsp; Subject For New Meeting:* &nbsp; <input
+								id="subectinput" ng-model="roomSearchInfo.subject">
+						</p></td>
+
+					<td>
+						<button id="searchbtn" onclick="">Search</button>
+					</td>
+					<td>
+						<button id="cancelbtn" onclick="" disabled="disabled">Cancel</button>
+					</td>
+					<td><input value="showOccupancy" type="submit"
+						ng-click="showOccupancy(roomSearchInfo)" /></td>
+				</tr>
+			</table>
+		</form>
+		<span ng-bind="roomSearchInfo |json"></span>
+	</div>
+
+
+</body>
+</html>
