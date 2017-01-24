@@ -1,10 +1,12 @@
 <p>
-	&nbsp; Duration: </br> &nbsp; <select id="selecthour" class="selectOne"
-		ng-model="roomSearchInfo.duration" >
+	&nbsp; Duration: </br> &nbsp; <select id="selectDurationHour" class="selectOne"
+		ng-model="roomSearchInfo.duration.hour" >
+		<option value="Hr">Hr</option>
 		<option ng-repeat="hr in $ctrl.hrArray" value="{{hr}}">{{hr}}</option>
 
-	</select> <select id="selectmin" class="selectOne"
+	</select> <select id="selectDurationMin" class="selectOne"
 		ng-model="roomSearchInfo.duration.min" >
+		<option value="Min">Min</option>
 		<option ng-repeat="min in $ctrl.minArray" value="{{min}}">{{min}}</option>
 	</select>
 </p>

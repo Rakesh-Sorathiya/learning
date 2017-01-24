@@ -3,12 +3,12 @@
  */
 
 angular.module('roomSearch').controller('roomSearchController',
-		[ '$scope', function($scope) {
-			$scope.roomSearchInfo = {};
-			
-			$scope.showOccupancy = function (roomSearchInfo) {
-				alert("Hello How are you !!!"	);
-				$scope.roomSearchInfo = angular.copy(roomSearchInfo);
+		[ 'fetchOccupancy', '$scope', function($fetchOccupancy, $scope) {
+			$fetchOccupancy.roomSearchInfo = {};
+
+			$scope.showOccupancy = function(roomSearchInfo) {
+				$fetchOccupancys.roomSearchInfo = angular.copy(roomSearchInfo);
+             
 			};
 
 		} ]);

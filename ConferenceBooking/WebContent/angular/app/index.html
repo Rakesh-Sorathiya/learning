@@ -40,6 +40,11 @@
 <script
 	src="angular/app/room-search-detail/booking-date/booking-duration.component.js"></script>
 
+<script
+	src="angular/app/room-search-detail/roomSearch-services/fetch-occupancy.service.module.js"></script>
+
+<script
+	src="angular/app/room-search-detail/roomSearch-services/fetch-occupancy.service.js"></script>
 
 
 <style type="text/css">
@@ -111,7 +116,8 @@ select.selectOne {
 								<option value="Projector">Projector</option>
 								<option value="Video Conferencing">Video Conferencing</option>
 
-							</select> <select id="selctfacility2" ng-model="roomSearchInfo.priority.facility2">
+							</select> <select id="selctfacility2"
+								ng-model="roomSearchInfo.priority.facility2">
 								<option value="Network Point">Network Point</option>
 								<option value="Projector">Projector</option>
 								<option value="Video Conferencing">Video Conferencing</option>
@@ -142,8 +148,8 @@ select.selectOne {
 					<!--  meeting subject and even button like search ,cancel ,show Occupancy -->
 
 					<td><p>
-							&nbsp; Subject For New Meeting:* &nbsp; <input
-								id="subectinput" ng-model="roomSearchInfo.subject">
+							&nbsp; Subject For New Meeting:* &nbsp; <input id="subectinput"
+								ng-model="roomSearchInfo.subject">
 						</p></td>
 
 					<td>
