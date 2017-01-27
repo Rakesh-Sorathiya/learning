@@ -2,23 +2,29 @@ package com.conferencebooking.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table(name = "location")
+@Entity
+@Table(name = "locations")
 public class Location {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "location_id")
 	private int locationId;
 
 	@Column(name = "location")
 	private String location;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
+
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy = "location")
 	private List<ConferenceRoom> conferenceRoomList;
 
 	public String getLocation() {

@@ -9,17 +9,18 @@ import com.conferencebooking.model.Purpose;
 
 public interface ConferenceBookingService {
 
-	public void saveConfernceRoom();
+	public void saveConfernceRoom(ConferenceRoom conferenceRoom);
 
-	public List<ConferenceRoom> fetchConfernceRoom();
+	public List<ConferenceRoom> fetchConfernceRoom(
+			ConferenceRoom conferenceRoomSearchInput);
 
-	public ConferenceRoom fetchConferenceRoom(int conferenceRoomId);
+	public ConferenceRoom fetchConferenceRoom(long conferenceRoomId);
 
-	public void saveLocation();
+	public void saveLocation(Location location);
 
-	public void saveFacility();
+	public void saveFacility(Facility facility);
 
-	public void savePurpose();
+	public void savePurpose(Purpose purposes);
 
 	public Location fetchLocation(int locationId);
 

@@ -35,6 +35,7 @@
 
 	<context:annotation-config />
 
+   
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 
@@ -62,7 +63,8 @@
 		</property>
 	</bean>
 
-	<bean id="userDao" class="com.cybage.social.service.dao.UserDaoImpl">
+	<bean id="conferenceBookingServiceImpl"
+		class="com.conferencebooking.db.services.ConferenceBookingServiceImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 </beans>

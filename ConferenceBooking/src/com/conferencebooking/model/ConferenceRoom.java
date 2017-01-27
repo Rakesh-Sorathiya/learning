@@ -25,7 +25,7 @@ public class ConferenceRoom {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "location_id", nullable = false)
-	private Location conferenceRoomLocation;
+	private Location location;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "conf_room_facilities", joinColumns = { @JoinColumn(name = "conference_room_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "facility_id", nullable = false, updatable = false) })
@@ -53,14 +53,6 @@ public class ConferenceRoom {
 		this.conferenceRoomName = conferenceRoomName;
 	}
 
-	public Location getConferenceRoomLocation() {
-		return conferenceRoomLocation;
-	}
-
-	public void setConferenceRoomLocation(Location conferenceRoomLocation) {
-		this.conferenceRoomLocation = conferenceRoomLocation;
-	}
-
 	public List<Facility> getFacilities() {
 		return facilities;
 	}
@@ -83,6 +75,14 @@ public class ConferenceRoom {
 
 	public void setConferenceRoomCapacity(int conferenceRoomCapacity) {
 		this.conferenceRoomCapacity = conferenceRoomCapacity;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 }
