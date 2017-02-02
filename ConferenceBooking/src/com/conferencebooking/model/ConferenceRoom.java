@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,15 +28,18 @@ public class ConferenceRoom {
 	@JoinColumn(name = "location_id", nullable = false)
 	private Location location;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "conf_room_facilities", joinColumns = { @JoinColumn(name = "conference_room_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "facility_id", nullable = false, updatable = false) })
 	private List<Facility> facilities;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "conf_room_purpose", joinColumns = { @JoinColumn(name = "conference_room_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "pupose_id", nullable = false, updatable = false) })
+	@JoinTable(name = "conf_room_purpose", joinColumns = { @JoinColumn(name = "conference_room_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "purpose_id", nullable = false, updatable = false) })
 	private List<Purpose> conferenceRoomPurpose;
 
 	private int conferenceRoomCapacity;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "conferenceRoom")
+	private List<BookingDetails> bookingDetails;
 
 	public long getConferenceRoomId() {
 		return conferenceRoomId;
@@ -83,6 +87,14 @@ public class ConferenceRoom {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public List<BookingDetails> getBookingDetails() {
+		return bookingDetails;
+	}
+
+	public void setBookingDetails(List<BookingDetails> bookingDetails) {
+		this.bookingDetails = bookingDetails;
 	}
 
 }

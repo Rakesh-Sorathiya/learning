@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,19 +13,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+import flexjson.JSONSerializer;
+
 @Table(name = "locations")
+@Entity
 public class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "location_id")
-	private int locationId;
+	private long locationId;
 
 	@Column(name = "location")
 	private String location;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy = "location")
+	@ElementCollection
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "location")
 	private List<ConferenceRoom> conferenceRoomList;
 
 	public String getLocation() {
@@ -35,11 +39,11 @@ public class Location {
 		this.location = location;
 	}
 
-	public int getLocationId() {
+	public long getLocationId() {
 		return locationId;
 	}
 
-	public void setLocationId(int locationId) {
+	public void setLocationId(long locationId) {
 		this.locationId = locationId;
 	}
 
@@ -51,4 +55,19 @@ public class Location {
 		this.conferenceRoomList = conferenceRoomList;
 	}
 
+	public static String serialise(List<Location> locationList) {
+
+		JSONSerializer jsonSerializer = new JSONSerializer();
+		jsonSerializer.exclude("class");
+		String locationListJsonObject = jsonSerializer.serialize(locationList);
+		return locationListJsonObject;
+	}
+
+	@Override
+	public String toString() {
+		return "Location [locationId=" + locationId + ", location=" + location
+				+ ", conferenceRoomList=" + conferenceRoomList + "]";
+	}
+	
+	
 }

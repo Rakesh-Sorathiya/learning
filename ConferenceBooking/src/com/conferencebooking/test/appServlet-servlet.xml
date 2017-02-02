@@ -35,7 +35,7 @@
 
 	<context:annotation-config />
 
-   
+
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 
@@ -48,6 +48,7 @@
 				<value>com.conferencebooking.model.Facility</value>
 				<value>com.conferencebooking.model.Location</value>
 				<value>com.conferencebooking.model.Purpose</value>
+				<value>com.conferencebooking.model.BookingDetails</value>
 			</list>
 		</property>
 
@@ -58,6 +59,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- Drop and re-create the database schema on startup -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+
 
 			</props>
 		</property>
